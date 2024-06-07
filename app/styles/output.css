@@ -958,21 +958,6 @@ html {
   }
 }
 
-.radio {
-  flex-shrink: 0;
-  --chkbg: var(--bc);
-  height: 1.5rem;
-  width: 1.5rem;
-  cursor: pointer;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border-radius: 9999px;
-  border-width: 1px;
-  border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
-  --tw-border-opacity: 0.2;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .btn {
     animation: button-pop var(--animation-btn, 0.25s) ease-out;
@@ -1218,15 +1203,6 @@ html {
   }
 }
 
-:where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn).focus, :where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn):focus, :where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):is(summary):not(.active, .btn):focus-visible, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn).focus, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn):focus, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):is(summary):not(.active, .btn):focus-visible {
-  cursor: pointer;
-  background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-  --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
 @keyframes modal-pop {
   0% {
     opacity: 0;
@@ -1237,32 +1213,6 @@ html {
   50% {
     background-position-x: -115%;
   }
-}
-
-.radio:focus {
-  box-shadow: none;
-}
-
-.radio:focus-visible {
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/1));
-}
-
-.radio:checked,
-  .radio[aria-checked="true"] {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
-  background-image: none;
-  animation: radiomark var(--animation-input, 0.2s) ease-out;
-  box-shadow: 0 0 0 4px var(--fallback-b1,oklch(var(--b1)/1)) inset,
-      0 0 0 4px var(--fallback-b1,oklch(var(--b1)/1)) inset;
-}
-
-.radio:disabled {
-  cursor: not-allowed;
-  opacity: 0.2;
 }
 
 @keyframes radiomark {

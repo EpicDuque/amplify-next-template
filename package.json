@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tailwind": "npx tailwindcss -i ./app/styles/app.css -o ./app/styles/output.css --watch"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^6.1.12",
