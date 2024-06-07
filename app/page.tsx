@@ -1,13 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
+import {Authenticator} from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import '../app/styles/amplify.css'
+
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
-import "./../app/app.css";
+
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
-import "@aws-amplify/ui-react/styles.css";
-
 Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
@@ -31,22 +34,40 @@ export default function App() {
     });
   }
 
+  function deleteTodo(id: string) {
+    client.models.Todo.delete({ id });
+  }
+
   return (
-    <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-          Review next steps of this tutorial.
-        </a>
-      </div>
+    <main className="flex justify-center min-h-screen p-3">
+        <Authenticator>
+          <div className="flex flex-col w-1/4 items-center justify-center">
+            <h1 className="font-bold">My todos</h1>
+            <button
+              className="btn btn-sm btn-outline btn-primary w-40 mx-auto"
+              onClick={createTodo}
+            >
+              + new{" "}
+            </button>
+
+            <ul className="my-2 w-2/3">
+              {todos.map((todo) => (
+                <li
+                  className="border rounded-md p-1 my-2 items-center flex"
+                  key={todo.id}
+                >
+                  <span className="grow">{todo.content}</span>
+                  <button
+                    className="btn btn-sm btn-error ml-2"
+                    onClick={() => deleteTodo(todo.id)}
+                  >
+                    X
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Authenticator>
     </main>
   );
 }
